@@ -3,7 +3,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package card;
-import java.util.Scanner;
 
 /**
  * A class that fills a magic hand of 7 cards with random Card Objects
@@ -25,20 +24,16 @@ public class CardTrick {
             magicHand[i] = c;
             
         }
-        Scanner input = new Scanner(System.in);
+            Card luckyCard = new Card();
+            luckyCard.setValue(7);
+            luckyCard.setSuit("Hearts");
 
-        System.out.println("Enter card value (1-13):");
-        int userValue = input.nextInt();
+            boolean found = false;
 
-        System.out.println("Enter suit (Hearts, Diamonds, Spades, Clubs):");
-        String userSuit = input.next();
-
-        boolean found = false;
-
-        for(Card card : magicHand)
+            for(Card card : magicHand)
         {
-            if(card.getValue() == userValue &&
-               card.getSuit().equalsIgnoreCase(userSuit))
+            if(card.getValue() == luckyCard.getValue() &&
+            card.getSuit().equalsIgnoreCase(luckyCard.getSuit()))
             {
                 found = true;
                 break;
@@ -47,11 +42,11 @@ public class CardTrick {
 
         if(found)
         {
-            System.out.println("Your card is in the magic hand!");
+            System.out.println("Winning! Lucky card is in the magic hand!");
         }
         else
         {
-            System.out.println("Sorry, your card is not there.");
+            System.out.println("Losing! Lucky card is not in the magic hand.");
         }
 
     }
